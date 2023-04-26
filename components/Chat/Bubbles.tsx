@@ -10,7 +10,7 @@ function Bubble({
   return (
     <div
       style={{
-        margin: '10px 0',
+        // margin: '10px 0',
         padding: '16px',
         borderRadius: 16,
         color: 'white',

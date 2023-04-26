@@ -21,5 +21,5 @@ module.exports = {
     '.*', // Any uncaught imports
   ],
   importOrderSeparation: true,
-  importOrderSortSpecifiers: true,
+  importOrderSortSpecifiers: false,
 };

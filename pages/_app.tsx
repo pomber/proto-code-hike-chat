@@ -5,7 +5,10 @@ import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 import { Inter } from 'next/font/google';
 
+// prettier-ignore
 import '@/styles/globals.css';
+// prettier-ignore
+import '@code-hike/mdx/dist/index.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

@@ -46,15 +46,17 @@ pre:has(div.codeblock) {
 
 .ch-scrollycoding {
   flex-direction: row-reverse;
-  margin: 0;
+  margin: 0 !important;
 }
 
 .ch-scrollycoding-content {
-  padding: calc(50vh - 100px) 0;
+  padding: calc(50vh - 100px) 0 !important;
 }
 
 .ch-scrollycoding-step-content {
-  border-radius: 18px;
-
-  padding: 12px;
+  border-radius: 18px !important;
+  padding: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px;
 }

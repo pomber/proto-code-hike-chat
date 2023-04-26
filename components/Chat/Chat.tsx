@@ -478,11 +478,11 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     }}
                   />
                 ))}
-                <div className="max-w-lg mx-auto">
+                <div className="max-w-3xl mx-auto">
                   <Content />
                 </div>
                 {loading && <ChatLoader />}
-                <div className="h-[162px] " ref={messagesEndRef} />
+                <div className="h-[0px] " ref={messagesEndRef} />
               </>
             )}
           </div>
