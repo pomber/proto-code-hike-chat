@@ -41,3 +41,20 @@ html {
 pre:has(div.codeblock) {
   padding: 0;
 }
+
+/* code hike */
+
+.ch-scrollycoding {
+  flex-direction: row-reverse;
+  margin: 0;
+}
+
+.ch-scrollycoding-content {
+  padding: calc(50vh - 100px) 0;
+}
+
+.ch-scrollycoding-step-content {
+  border-radius: 18px;
+
+  padding: 12px;
+}
