@@ -51,6 +51,7 @@ pre:has(div.codeblock) {
 
 .ch-scrollycoding-content {
   padding: calc(50vh - 100px) 0 !important;
+  font-size: 1rem !important;
 }
 
 .ch-scrollycoding-step-content {
@@ -59,4 +60,8 @@ pre:has(div.codeblock) {
   display: flex !important;
   flex-direction: column !important;
   gap: 10px;
+}
+.ch-scrollycoding-step-content[data-selected] {
+  border-color: rgb(191, 158, 238) !important;
+  background: rgba(189, 147, 249, 0.243);
 }
