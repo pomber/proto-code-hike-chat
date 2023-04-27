@@ -5,8 +5,8 @@ function Bubble({
   isQuestion,
 }: PropsWithChildren<{ isQuestion: boolean }>) {
   const extraStyle = isQuestion
-    ? { backgroundColor: '#0084ff', borderBottomRightRadius: 4 }
-    : { backgroundColor: 'rgb(47, 51, 54)', borderTopLeftRadius: 4 };
+    ? { backgroundColor: '#0084ff', borderBottomRightRadius: 3 }
+    : { backgroundColor: 'rgb(47, 51, 54)', borderTopLeftRadius: 3 };
   return (
     <div
       className={isQuestion ? 'question' : 'answer'}
@@ -49,7 +49,42 @@ export function Answer({
 
 function Writing({ children }: PropsWithChildren<{}>) {
   const kids = React.Children.toArray(children);
-  return <>{children}</>;
+  const [lastWordIndex, setLastWordIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setLastWordIndex((i) => i + 1);
+      if (lastWordIndex >= kids.length) {
+        clearInterval(interval);
+      }
+    }, 60);
+    return () => clearInterval(interval);
+  }, []);
+
+  React.useLayoutEffect(() => {
+    document!
+      .getElementById('messages-end')!
+      .scrollIntoView({ behavior: 'auto' });
+  }, [lastWordIndex]);
+
+  let counter = 0;
+  let newKids = [] as any;
+
+  kids.forEach((kid: any) => {
+    if (counter >= lastWordIndex) {
+      return;
+    }
+    if (kid.type === 'p' && typeof kid.props.children === 'string') {
+      const words = kid.props.children.split(' ');
+      const newWords = words.slice(0, lastWordIndex - counter);
+      counter += newWords.length;
+      newKids.push(<p>{newWords.join(' ')}</p>);
+    } else {
+      newKids.push(kid);
+    }
+  });
+
+  return <>{newKids}</>;
 }
 
 export function Thinking() {

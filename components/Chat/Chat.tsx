@@ -28,6 +28,7 @@ import HomeContext from '@/pages/api/home/home.context';
 import Spinner from '../Spinner';
 import Content1 from './1.mdx';
 import Content2 from './2.mdx';
+import Content3 from './3.mdx';
 import { Answer, Question } from './Bubbles';
 import { ChatInput } from './ChatInput';
 import { ChatLoader } from './ChatLoader';
@@ -37,7 +38,7 @@ import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
 
-const steps = ['div', Content1, Content2];
+const steps = ['div', Content1, Content2, Content3];
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -486,11 +487,15 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     }}
                   />
                 ))}
-                <div className="max-w-3xl mx-auto text-black" key={v}>
+                <div className={'max-w-3xl mx-auto v' + v} key={v}>
                   <C />
                 </div>
                 {loading && <ChatLoader />}
-                <div className="h-[0px] " ref={messagesEndRef} />
+                <div
+                  className="h-[0px] "
+                  ref={messagesEndRef}
+                  id="messages-end"
+                />
               </>
             )}
           </div>
@@ -500,7 +505,11 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             textareaRef={textareaRef}
             onSend={(message, plugin) => {
               setV((v) => (v + 1) % VS);
-              console.log('onSend', message);
+              if (v == 0) {
+                setTimeout(() => {
+                  setV(2);
+                }, 4000);
+              }
             }}
             onScrollDownClick={handleScrollDown}
             onRegenerate={() => {

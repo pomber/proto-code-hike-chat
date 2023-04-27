@@ -50,8 +50,17 @@ pre:has(div.codeblock) {
   --ch-scrollycoding-code-min-height: calc(90vh - 140px - 12.8px);
 }
 
+.v1 .ch-scrollycoding-sticker {
+  opacity: 0;
+}
+
+.ch-scrollycoding-sticker {
+  opacity: 1;
+  transition: opacity 0.8s;
+}
+
 .ch-scrollycoding-content {
-  padding: calc(50vh - 140px - 36px) 0 140px !important;
+  padding: 80vh 0 140px !important;
   font-size: 1rem !important;
 }
 
@@ -61,8 +70,9 @@ pre:has(div.codeblock) {
   display: flex !important;
   flex-direction: column !important;
   gap: 10px;
-  min-height: 50vh !important;
-  justify-content: end;
+  /* min-height: 50vh !important; */
+  min-height: 10px !important;
+  justify-content: flex-end;
 }
 .ch-scrollycoding-step-content[data-selected] {
   border-color: transparent !important;
