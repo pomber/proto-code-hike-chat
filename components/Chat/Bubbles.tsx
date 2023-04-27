@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 function Bubble({
   children,
@@ -48,6 +48,7 @@ export function Answer({
 }
 
 function Writing({ children }: PropsWithChildren<{}>) {
+  const kids = React.Children.toArray(children);
   return <>{children}</>;
 }
 

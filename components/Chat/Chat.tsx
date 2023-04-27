@@ -26,7 +26,6 @@ import { Plugin } from '@/types/plugin';
 import HomeContext from '@/pages/api/home/home.context';
 
 import Spinner from '../Spinner';
-import Content from './0.mdx';
 import Content1 from './1.mdx';
 import Content2 from './2.mdx';
 import { Answer, Question } from './Bubbles';
@@ -37,6 +36,8 @@ import { MemoizedChatMessage } from './MemoizedChatMessage';
 import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
+
+const steps = ['div', Content1, Content2];
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -353,9 +354,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
 
   const [v, setV] = useState(0);
 
-  const VS = 3;
-  console.log({ v });
-  const C = v === 0 ? Content : v === 1 ? Content1 : Content2;
+  const VS = steps.length;
+  const C = steps[v];
 
   return (
     <div className="relative flex-1 overflow-hidden bg-white dark:bg-[#d8dbff]">
