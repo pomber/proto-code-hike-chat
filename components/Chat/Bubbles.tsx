@@ -9,6 +9,7 @@ function Bubble({
     : { backgroundColor: 'rgb(47, 51, 54)', borderTopLeftRadius: 4 };
   return (
     <div
+      className={isQuestion ? 'question' : 'answer'}
       style={{
         // margin: '10px 0',
         padding: '16px',

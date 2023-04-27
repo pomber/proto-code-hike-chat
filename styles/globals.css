@@ -61,8 +61,13 @@ pre:has(div.codeblock) {
   display: flex !important;
   flex-direction: column !important;
   gap: 10px;
+  min-height: 50vh !important;
+  justify-content: end;
 }
 .ch-scrollycoding-step-content[data-selected] {
-  border-color: rgb(191, 158, 238) !important;
-  background: rgba(189, 147, 249, 0.243);
+  border-color: transparent !important;
+  /* background: rgba(189, 147, 249, 0.243); */
+}
+.ch-scrollycoding-step-content[data-selected] .answer {
+  outline: rgb(191, 158, 238) 4px solid;
 }
