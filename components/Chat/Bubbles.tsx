@@ -28,12 +28,30 @@ export function Question({ children }: PropsWithChildren<{}>) {
   return <Bubble isQuestion>{children}</Bubble>;
 }
 
-export function Answer({ children }: PropsWithChildren<{}>) {
-  return <Bubble isQuestion={false}>{children}</Bubble>;
+export function Answer({
+  children,
+  thinking,
+  writing,
+}: PropsWithChildren<{ thinking: boolean; writing: boolean }>) {
+  console.log({ children });
+  return (
+    <Bubble isQuestion={false}>
+      {thinking ? (
+        <Thinking />
+      ) : writing ? (
+        <Writing>{children}</Writing>
+      ) : (
+        children
+      )}
+    </Bubble>
+  );
 }
 
-export function Writing() {
-  // three big animated (using tailwind) dots showing that the user is writing
+function Writing({ children }: PropsWithChildren<{}>) {
+  return <>{children}</>;
+}
+
+export function Thinking() {
   return (
     <div className="flex">
       <div className="w-2 h-2 bg-slate-100 rounded-full mx-1 animate-[bounce_1s_infinite]" />
