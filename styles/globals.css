@@ -47,10 +47,11 @@ pre:has(div.codeblock) {
 .ch-scrollycoding {
   flex-direction: row-reverse;
   margin: 0 !important;
+  --ch-scrollycoding-code-min-height: calc(90vh - 140px - 12.8px);
 }
 
 .ch-scrollycoding-content {
-  padding: calc(50vh - 100px) 0 !important;
+  padding: calc(50vh - 100px) 0 140px !important;
   font-size: 1rem !important;
 }
 

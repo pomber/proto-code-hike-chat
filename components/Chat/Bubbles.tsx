@@ -35,9 +35,9 @@ export function Writing() {
   // three big animated (using tailwind) dots showing that the user is writing
   return (
     <div className="flex">
-      <div className="w-2 h-2 bg-white rounded-full mx-1 animate-[bounce_1s_infinite]" />
-      <div className="w-2 h-2 bg-white rounded-full mx-1 animate-[bounce_1s_infinite_100ms]" />
-      <div className="w-2 h-2 bg-white rounded-full mx-1 animate-[bounce_1s_infinite_200ms]" />
+      <div className="w-2 h-2 bg-slate-100 rounded-full mx-1 animate-[bounce_1s_infinite]" />
+      <div className="w-2 h-2 bg-slate-100 rounded-full mx-1 animate-[bounce_1s_infinite_100ms]" />
+      <div className="w-2 h-2 bg-slate-100 rounded-full mx-1 animate-[bounce_1s_infinite_200ms]" />
     </div>
   );
 }

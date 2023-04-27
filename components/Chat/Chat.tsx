@@ -27,6 +27,8 @@ import HomeContext from '@/pages/api/home/home.context';
 
 import Spinner from '../Spinner';
 import Content from './0.mdx';
+import Content1 from './1.mdx';
+import Content2 from './2.mdx';
 import { Answer, Question } from './Bubbles';
 import { ChatInput } from './ChatInput';
 import { ChatLoader } from './ChatLoader';
@@ -349,6 +351,12 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     };
   }, [messagesEndRef]);
 
+  const [v, setV] = useState(0);
+
+  const VS = 3;
+  console.log({ v });
+  const C = v === 0 ? Content : v === 1 ? Content1 : Content2;
+
   return (
     <div className="relative flex-1 overflow-hidden bg-white dark:bg-[#d8dbff]">
       {false ? (
@@ -478,8 +486,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     }}
                   />
                 ))}
-                <div className="max-w-3xl mx-auto">
-                  <Content />
+                <div className="max-w-3xl mx-auto text-black" key={v}>
+                  <C />
                 </div>
                 {loading && <ChatLoader />}
                 <div className="h-[0px] " ref={messagesEndRef} />
@@ -491,8 +499,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             stopConversationRef={stopConversationRef}
             textareaRef={textareaRef}
             onSend={(message, plugin) => {
-              setCurrentMessage(message);
-              handleSend(message, 0, plugin);
+              setV((v) => (v + 1) % VS);
+              console.log('onSend', message);
             }}
             onScrollDownClick={handleScrollDown}
             onRegenerate={() => {
