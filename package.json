@@ -12,7 +12,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@code-hike/mdx": "^0.8.2",
+    "@code-hike/mdx": "0.8.3--canary.360.f91c849.0",
     "@dqbd/tiktoken": "^1.0.2",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
