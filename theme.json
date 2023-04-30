@@ -955,8 +955,8 @@
         "meta.variable.assignment.destructured.object.coffee variable variable"
       ],
       "settings": {
-        "fontStyle": "normal",
-        "foreground": "#f6f6f4"
+        "foreground": "#62e884ff",
+        "fontStyle": "normal"
       }
     },
     {

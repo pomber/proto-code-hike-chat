@@ -27,7 +27,6 @@ import HomeContext from '@/pages/api/home/home.context';
 
 import Spinner from '../Spinner';
 import Content1 from './1.mdx';
-import Content2 from './2.mdx';
 import Content3 from './3.mdx';
 import { ChatInput } from './ChatInput';
 import { ChatLoader } from './ChatLoader';
@@ -36,6 +35,7 @@ import { MemoizedChatMessage } from './MemoizedChatMessage';
 import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
+import Content2 from './speech/full.mdx';
 
 const steps = ['div', Content1, Content2, Content3];
 
@@ -486,7 +486,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     }}
                   />
                 ))}
-                <div className={'max-w-3xl mx-auto v' + v} key={v}>
+                <div className={'max-w-4xl mx-auto v' + v} key={v}>
                   <C />
                 </div>
                 {loading && <ChatLoader />}

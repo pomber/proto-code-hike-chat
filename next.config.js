@@ -5,7 +5,9 @@ const { remarkCodeHike } = require('@code-hike/mdx');
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [[remarkCodeHike, { theme, triggerPosition: '-200px' }]],
+    remarkPlugins: [
+      [remarkCodeHike, { theme, triggerPosition: '-200px', lineNumbers: true }],
+    ],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
