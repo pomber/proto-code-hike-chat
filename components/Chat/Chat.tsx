@@ -29,7 +29,6 @@ import Spinner from '../Spinner';
 import Content1 from './1.mdx';
 import Content2 from './2.mdx';
 import Content3 from './3.mdx';
-import { Answer, Question } from './Bubbles';
 import { ChatInput } from './ChatInput';
 import { ChatLoader } from './ChatLoader';
 import { ErrorMessageDiv } from './ErrorMessageDiv';
@@ -353,7 +352,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     };
   }, [messagesEndRef]);
 
-  const [v, setV] = useState(0);
+  const [v, setV] = useState(2);
 
   const VS = steps.length;
   const C = steps[v];

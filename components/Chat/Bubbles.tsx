@@ -33,7 +33,6 @@ export function Answer({
   thinking,
   writing,
 }: PropsWithChildren<{ thinking: boolean; writing: boolean }>) {
-  console.log({ children });
   return (
     <Bubble isQuestion={false}>
       {thinking ? (
@@ -49,14 +48,18 @@ export function Answer({
 
 function Writing({ children }: PropsWithChildren<{}>) {
   const kids = React.Children.toArray(children);
-  const [lastWordIndex, setLastWordIndex] = React.useState(0);
+
+  const [state, setState] = React.useState({ count: 0, newKids: [] as any });
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setLastWordIndex((i) => i + 1);
-      if (lastWordIndex >= kids.length) {
-        clearInterval(interval);
-      }
+      setState((prev) => {
+        const [newKids, done] = sliceKids(kids, prev.count);
+        if (done) {
+          clearInterval(interval);
+        }
+        return { count: prev.count + 1, newKids };
+      });
     }, 60);
     return () => clearInterval(interval);
   }, []);
@@ -65,26 +68,41 @@ function Writing({ children }: PropsWithChildren<{}>) {
     document!
       .getElementById('messages-end')!
       .scrollIntoView({ behavior: 'auto' });
-  }, [lastWordIndex]);
+  }, [state.count]);
 
+  return <>{state.newKids}</>;
+}
+
+function sliceKids(kids: any[], endCount: number) {
   let counter = 0;
   let newKids = [] as any;
+  let done = true;
 
-  kids.forEach((kid: any) => {
-    if (counter >= lastWordIndex) {
-      return;
+  for (const kid of kids) {
+    if (counter >= endCount) {
+      done = false;
+      break;
     }
+
     if (kid.type === 'p' && typeof kid.props.children === 'string') {
       const words = kid.props.children.split(' ');
-      const newWords = words.slice(0, lastWordIndex - counter);
+      const remainingCount = endCount - counter;
+      const newWords = words.slice(0, remainingCount);
+
       counter += newWords.length;
       newKids.push(<p>{newWords.join(' ')}</p>);
+
+      if (newWords.length < words.length) {
+        done = false;
+        break;
+      }
     } else {
       newKids.push(kid);
+      counter++;
     }
-  });
+  }
 
-  return <>{newKids}</>;
+  return [newKids, done];
 }
 
 export function Thinking() {
