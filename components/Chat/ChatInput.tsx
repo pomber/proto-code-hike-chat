@@ -92,11 +92,6 @@ export const ChatInput = ({
       return;
     }
 
-    if (!content) {
-      alert(t('Please enter a message'));
-      return;
-    }
-
     onSend({ role: 'user', content }, plugin);
     setContent('');
     setPlugin(null);

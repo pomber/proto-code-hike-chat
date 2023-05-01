@@ -26,8 +26,6 @@ import { Plugin } from '@/types/plugin';
 import HomeContext from '@/pages/api/home/home.context';
 
 import Spinner from '../Spinner';
-import Content1 from './1.mdx';
-import Content3 from './3.mdx';
 import { ChatInput } from './ChatInput';
 import { ChatLoader } from './ChatLoader';
 import { ErrorMessageDiv } from './ErrorMessageDiv';
@@ -35,9 +33,34 @@ import { MemoizedChatMessage } from './MemoizedChatMessage';
 import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
-import Content2 from './speech/full.mdx';
+import Content1 from './speech/1.mdx';
+import Content2 from './speech/2.mdx';
+import Content3 from './speech/3.mdx';
+import Content4 from './speech/4.mdx';
+import Content5 from './speech/5.mdx';
+import Content6 from './speech/6.mdx';
+import Content7 from './speech/7.mdx';
+import Content8 from './speech/8.mdx';
+import Content9 from './speech/9.mdx';
+import Content10 from './speech/10.mdx';
+import Content11 from './speech/11.mdx';
+import Content12 from './speech/12.mdx';
 
-const steps = ['div', Content1, Content2, Content3];
+const steps = [
+  'div',
+  Content1,
+  Content2,
+  Content3,
+  Content4,
+  Content5,
+  Content6,
+  Content7,
+  Content8,
+  Content9,
+  Content10,
+  Content11,
+  Content12,
+];
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -352,10 +375,11 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     };
   }, [messagesEndRef]);
 
-  const [v, setV] = useState(2);
+  const [v, setV] = useState(0);
 
   const VS = steps.length;
   const C = steps[v];
+  console.log(v + '.mdx');
 
   return (
     <div className="relative flex-1 overflow-hidden bg-white dark:bg-[#d8dbff]">
@@ -448,8 +472,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             ) : (
               <>
                 <div className="sticky top-0 z-10 flex justify-center border border-b-neutral-300 bg-neutral-100 py-2 text-sm text-neutral-500 dark:border-none dark:bg-[#444654] dark:text-neutral-200">
-                  {t('Model')}: {selectedConversation?.model.name} | {t('Temp')}
-                  : {selectedConversation?.temperature} |
+                  {t('Model')}: GPT-4 | {t('Temp')}:{' '}
+                  {selectedConversation?.temperature} |
                   <button
                     className="ml-2 cursor-pointer hover:opacity-50"
                     onClick={handleSettings}
@@ -504,11 +528,6 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             textareaRef={textareaRef}
             onSend={(message, plugin) => {
               setV((v) => (v + 1) % VS);
-              if (v == 0) {
-                setTimeout(() => {
-                  setV(2);
-                }, 4000);
-              }
             }}
             onScrollDownClick={handleScrollDown}
             onRegenerate={() => {

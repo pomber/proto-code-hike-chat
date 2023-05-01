@@ -6,7 +6,15 @@ const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
-      [remarkCodeHike, { theme, triggerPosition: '-200px', lineNumbers: true }],
+      [
+        remarkCodeHike,
+        {
+          theme,
+          triggerPosition: '-200px',
+          lineNumbers: true,
+          showCopyButton: true,
+        },
+      ],
     ],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.

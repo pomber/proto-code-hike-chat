@@ -1,0 +1,176 @@
+import { Answer, Question } from "../Bubbles"
+
+<CH.Scrollycoding>
+
+<p />
+
+```jsx voice.jsx
+import React, { useState, useEffect } from "react"
+
+const VoiceListener = () => {
+  const [recognition, setRecognition] = useState(null)
+
+  useEffect(() => {
+    if (
+      "SpeechRecognition" in window ||
+      "webkitSpeechRecognition" in window
+    ) {
+      const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition
+      const recognitionInstance = new SpeechRecognition()
+      setRecognition(recognitionInstance)
+    } else {
+      console.error(
+        "Speech recognition not supported in this browser."
+      )
+    }
+  }, [])
+
+  return (
+    <div>
+      <h1>Voice Listener</h1>
+    </div>
+  )
+}
+
+export default VoiceListener
+```
+
+---
+
+<Question>
+  A react component that is constantly listening if the user
+  says a word from a list
+</Question>
+
+<Answer>
+
+To build a React component that listens for specific words spoken by the user, we'll need to use the Web Speech API, specifically the SpeechRecognition interface.
+
+First, let's create a simple React component called _`VoiceListener`_ that will contain our speech recognition logic. At this point, it only renders a title.
+
+</Answer>
+
+```jsx voice.jsx
+import React, { Component } from "react"
+
+class VoiceListener extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Voice Listener</h1>
+      </div>
+    )
+  }
+}
+
+export default VoiceListener
+```
+
+---
+
+<Answer>
+
+We'll first check if the browser supports the SpeechRecognition API and initialize the SpeechRecognition object.
+
+The _`componentDidMount`_ lifecycle method ensures that the API is initialized when the component is mounted.
+
+Please review this part and let me know if there are any issues or questions.
+
+</Answer>
+
+```jsx voice.jsx
+import React, { Component } from "react"
+
+class VoiceListener extends Component {
+  componentDidMount() {
+    if (
+      "SpeechRecognition" in window ||
+      "webkitSpeechRecognition" in window
+    ) {
+      const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition
+      this.recognition = new SpeechRecognition()
+    } else {
+      console.error(
+        "Speech recognition not supported in this browser."
+      )
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Voice Listener</h1>
+      </div>
+    )
+  }
+}
+
+export default VoiceListener
+```
+
+---
+
+<Question>
+
+Make it a function component, we don't use classes anymore
+
+</Question>
+
+<Answer>
+
+Sure! Let's convert the class component to a functional component.
+
+In this functional component, we use the _`useState`_ hook to store the recognition object. The _`useEffect`_ hook initializes the SpeechRecognition instance when the component mounts, similar to the _`componentDidMount`_ lifecycle method in the class component.
+
+Please review this updated code and let me know if there are any issues or questions.
+
+</Answer>
+
+```jsx voice.jsx
+import React, { useState, useEffect } from "react"
+
+const VoiceListener = () => {
+  const [recognition, setRecognition] = useState(null)
+
+  useEffect(() => {
+    if (
+      "SpeechRecognition" in window ||
+      "webkitSpeechRecognition" in window
+    ) {
+      const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition
+      const recognitionInstance = new SpeechRecognition()
+      setRecognition(recognitionInstance)
+    } else {
+      console.error(
+        "Speech recognition not supported in this browser."
+      )
+    }
+  }, [])
+
+  return (
+    <div>
+      <h1>Voice Listener</h1>
+    </div>
+  )
+}
+
+export default VoiceListener
+```
+
+---
+
+<Question>
+
+Go on
+
+</Question>
+
+<Answer thinking />
+
+</CH.Scrollycoding>

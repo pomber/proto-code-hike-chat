@@ -48,7 +48,7 @@ pre:has(div.codeblock) {
   flex-direction: row-reverse;
   margin: 0 !important;
   --ch-scrollycoding-code-min-height: calc(90vh - 140px - 12.8px);
-  --ch-scrollycoding-sticker-width: 500px;
+  --ch-scrollycoding-sticker-width: 520px;
 }
 
 .v1 .ch-scrollycoding-sticker {
@@ -58,6 +58,12 @@ pre:has(div.codeblock) {
 .ch-scrollycoding-sticker {
   opacity: 1;
   transition: opacity 0.8s;
+}
+
+.ch-scrollycoding-sticker .ch-codegroup,
+.ch-scrollycoding-sticker .ch-codeblock {
+  height: 74vh !important;
+  max-height: 74vh !important;
 }
 
 .ch-scrollycoding-content {

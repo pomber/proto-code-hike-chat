@@ -1,0 +1,42 @@
+import { Answer, Question } from "../Bubbles"
+
+<CH.Scrollycoding>
+
+<p />
+
+```jsx voice.jsx focus=1[2]
+.
+```
+
+---
+
+<Question>
+  A react component that is constantly listening if the user
+  says a word from a list
+</Question>
+
+<Answer writing>
+
+To build a React component that listens for specific words spoken by the user, we'll need to use the Web Speech API, specifically the SpeechRecognition interface.
+
+First, let's create a simple React component called _`VoiceListener`_ that will contain our speech recognition logic. At this point, it only renders a title.
+
+</Answer>
+
+```jsx voice.jsx
+import React, { Component } from "react"
+
+class VoiceListener extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Voice Listener</h1>
+      </div>
+    )
+  }
+}
+
+export default VoiceListener
+```
+
+</CH.Scrollycoding>

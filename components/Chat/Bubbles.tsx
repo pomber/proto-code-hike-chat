@@ -16,6 +16,7 @@ function Bubble({
         borderRadius: 16,
         color: 'white',
         lineHeight: '1.5',
+        minHeight: 40,
         ...extraStyle,
       }}
     >
