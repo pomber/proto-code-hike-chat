@@ -53,6 +53,7 @@ function Writing({ children }: PropsWithChildren<{}>) {
   const [state, setState] = React.useState({ count: 0, newKids: [] as any });
 
   React.useEffect(() => {
+    // console.log(kids);
     const interval = setInterval(() => {
       setState((prev) => {
         const [newKids, done] = sliceKids(kids, prev.count);
@@ -94,6 +95,31 @@ function sliceKids(kids: any[], endCount: number) {
       newKids.push(<p>{newWords.join(' ')}</p>);
 
       if (newWords.length < words.length) {
+        done = false;
+        break;
+      }
+    } else if (kid.type === 'ol') {
+      const lis = React.Children.toArray(kid.props.children).filter(
+        (k: any) => k.type === 'li',
+      ) as any[];
+      const newLis = [] as any[];
+      let i = 0;
+      while (i < lis.length && counter < endCount) {
+        i++;
+        const li = lis[i - 1];
+        const words = li.props.children.split(' ');
+        const remainingCount = endCount - counter;
+        const newWords = words.slice(0, remainingCount);
+        counter += newWords.length;
+        newLis.push(<li>{newWords.join(' ')}</li>);
+        if (newWords.length < words.length) {
+          done = false;
+          break;
+        }
+      }
+      const ol = <ol>{newLis}</ol>;
+      newKids.push(ol);
+      if (i < lis.length) {
         done = false;
         break;
       }

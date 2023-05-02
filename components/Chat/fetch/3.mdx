@@ -1,0 +1,65 @@
+import { Answer, Question } from "../Bubbles"
+
+<CH.Scrollycoding>
+
+<p />
+
+```jsx index.js
+fetch("https://api.example.com/data")
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => {
+    console.error(error)
+  })
+```
+
+---
+
+<Question>
+
+how to stop a fetch in js?
+
+</Question>
+
+<Answer>
+
+To stop a fetch request in JavaScript, you can use the AbortController and its associated signal.
+
+Let's start with a basic example of using fetch without abort functionality.
+
+</Answer>
+
+```jsx index.js
+fetch("https://api.example.com/data")
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => {
+    console.error(error)
+  })
+```
+
+---
+
+<Answer writing>
+
+Now, let's introduce the AbortController to enable aborting the fetch request.
+
+Here, we create an instance of AbortController and get its signal property. We then pass this signal to the fetch request options. The signal allows us to control the fetch request and abort it when necessary.
+
+</Answer>
+
+```js index.js
+// focus(1:2)
+const controller = new AbortController()
+const signal = controller.signal
+
+// focus[39:48]
+fetch("https://api.example.com/data", { signal })
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => {
+    console.error(error)
+  })
+```
+
+</CH.Scrollycoding>

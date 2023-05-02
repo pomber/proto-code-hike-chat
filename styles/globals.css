@@ -62,13 +62,14 @@ pre:has(div.codeblock) {
 
 .ch-scrollycoding-sticker .ch-codegroup,
 .ch-scrollycoding-sticker .ch-codeblock {
-  height: 74vh !important;
-  max-height: 74vh !important;
+  height: 64vh !important;
+  max-height: 64vh !important;
 }
 
 .ch-scrollycoding-content {
   padding: 80vh 0 140px !important;
   font-size: 1rem !important;
+  @apply prose;
 }
 
 .ch-scrollycoding-content p {
@@ -99,4 +100,8 @@ pre:has(div.codeblock) {
 }
 .ch-scrollycoding-step-content[data-selected] .answer {
   outline: rgb(191, 158, 238) 4px solid;
+}
+
+.ch-code-scroll-parent {
+  font-size: 16px !important;
 }

@@ -33,18 +33,19 @@ import { MemoizedChatMessage } from './MemoizedChatMessage';
 import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
-import Content1 from './speech/1.mdx';
-import Content2 from './speech/2.mdx';
-import Content3 from './speech/3.mdx';
-import Content4 from './speech/4.mdx';
-import Content5 from './speech/5.mdx';
-import Content6 from './speech/6.mdx';
-import Content7 from './speech/7.mdx';
-import Content8 from './speech/8.mdx';
-import Content9 from './speech/9.mdx';
-import Content10 from './speech/10.mdx';
-import Content11 from './speech/11.mdx';
-import Content12 from './speech/12.mdx';
+import Content1 from './fetch/1.mdx';
+import Content2 from './fetch/2.mdx';
+import Content3 from './fetch/3.mdx';
+import Content4 from './fetch/4.mdx';
+import Content5 from './fetch/5.mdx';
+import Content6 from './fetch/6.mdx';
+
+// import Content7 from './speech/7.mdx';
+// import Content8 from './speech/8.mdx';
+// import Content9 from './speech/9.mdx';
+// import Content10 from './speech/10.mdx';
+// import Content11 from './speech/11.mdx';
+// import Content12 from './speech/12.mdx';
 
 const steps = [
   'div',
@@ -54,12 +55,12 @@ const steps = [
   Content4,
   Content5,
   Content6,
-  Content7,
-  Content8,
-  Content9,
-  Content10,
-  Content11,
-  Content12,
+  // Content7,
+  // Content8,
+  // Content9,
+  // Content10,
+  // Content11,
+  // Content12,
 ];
 
 interface Props {
@@ -527,7 +528,18 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             stopConversationRef={stopConversationRef}
             textareaRef={textareaRef}
             onSend={(message, plugin) => {
-              setV((v) => (v + 1) % VS);
+              // setV((v) => (v + 1) % VS);
+              setV(1);
+              let t = 2500;
+              setTimeout(() => setV(2), t);
+              t += 2100;
+              setTimeout(() => setV(3), t);
+              t += 3300;
+              setTimeout(() => setV(4), t);
+              t += 2600;
+              setTimeout(() => setV(5), t);
+              t += 3500;
+              setTimeout(() => setV(6), t);
             }}
             onScrollDownClick={handleScrollDown}
             onRegenerate={() => {

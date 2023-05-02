@@ -11,7 +11,7 @@ const withMDX = require('@next/mdx')({
         {
           theme,
           triggerPosition: '-200px',
-          lineNumbers: true,
+          // lineNumbers: true,
           showCopyButton: true,
         },
       ],

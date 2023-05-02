@@ -1,0 +1,36 @@
+import { Answer, Question } from "../Bubbles"
+
+<CH.Scrollycoding>
+
+<p />
+
+```js index.js focus=1[2]
+.
+```
+
+---
+
+<Question>
+
+how to stop a fetch in js?
+
+</Question>
+
+<Answer writing>
+
+To stop a fetch request in JavaScript, you can use the AbortController and its associated signal.
+
+Let's start with a basic example of using fetch without abort functionality.
+
+</Answer>
+
+```jsx index.js
+fetch("https://api.example.com/data")
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => {
+    console.error(error)
+  })
+```
+
+</CH.Scrollycoding>
